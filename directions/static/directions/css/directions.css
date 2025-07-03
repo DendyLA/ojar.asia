@@ -1,0 +1,150 @@
+.main{
+	background-color: #9FEDC4;
+	padding: 5rem 0;
+	margin-top: 5rem;
+}
+
+.main__wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+}
+
+.main__title{
+	font-size: 6rem;
+	font-weight: 600;
+	text-align: center;
+}
+
+.main__descr{
+	font-size: 2rem;
+	font-weight: 400;
+	text-align: center;
+}
+
+.companies{
+	padding: 4rem 0;
+}
+
+.companies__wrapper{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 2rem;
+}
+
+.companies__item{
+	width: 30%;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+}
+.companies__img{
+	width: 100%;
+	height: 100%;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.companies__item img{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
+}
+
+.companies__item:hover .companies__arrow{
+	transform: translateX(30px);
+}
+
+.companies__title{
+	font-size: 3rem;
+	font-weight: 500;
+}
+
+.companies__descr{
+	font-size: 1.6rem;
+	font-weight: 400;
+}
+
+.companies__arrow{
+	font-size: 3rem;
+	align-self: flex-start;
+	transition: all .4s;
+}
+
+
+
+
+@media (max-width: 419px) {
+	.companies__item{
+		width: 45%;
+		padding: 0;
+		justify-content: flex-start;
+  		align-items: flex-start;
+		gap: 1rem;
+	}
+	.companies__title {
+		font-size: 1.5rem;
+		font-weight: 500;
+	}
+	.companies__descr{
+		font-size: 1rem;
+	}
+	.main__title{
+		font-size: 2rem;
+	}
+	.main__descr {
+		font-size: 1.5rem;
+
+	}
+	.companies__arrow{
+		font-size: 2rem;
+	}
+	.companies__img{
+		width: 100%;
+		height: 130px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+ }
+/* Мобильные устройства (до 576px) */
+@media (min-width: 420px) and (max-width: 575px) {
+	.companies__item{
+		width: 45%;
+		padding: 0;
+	}
+	.companies__title {
+		font-size: 2rem;
+		font-weight: 500;
+	}
+	.companies__descr{
+		font-size: 1.2rem;
+	}
+	.main__title{
+		font-size: 4rem;
+	}
+ }
+
+/* Планшеты (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) { 
+	.companies__item{
+		width: 45%;
+	}
+}
+
+/* Малые ноутбуки / планшеты в альбомной */
+@media (min-width: 768px) and (max-width: 991px) { 
+	.companies__item{
+		width: 45%;
+	}
+}
+
+

@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/css/newsDetail.css' %}"> 
+{% endblock extracss %}
+
+{% block main %}
+
+<section class="news">
+	<div class="container">
+		<div class="news__wrapper">
+			<a href="{% url "news-all" %}" class="news__link">Все новости</a>
+			<h1 class="news__title">{{ news.title }}</h1>
+			<div class="news__time">{{ news.created_at|date:"F j, Y" }}</div>
+			<img src="{{ news.image.url }}" alt="news__image" class="news__img">
+			<div class="news__text">{{ news.text|safe }}</div>
+		</div>
+		
+	</div>
+</section>
+
+{% endblock main %}
+
+{% block extrajs %}
+<script src="{% static 'news/js/newsDetail.js' %}"></script>
+{% endblock extrajs %}

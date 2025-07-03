@@ -1,0 +1,146 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}">
+{% endblock extracss %}
+
+
+{% block main %}
+
+<section class="main">
+	<div class="slider">
+		{% for slide in slides %}
+		<div class="slider__item">
+			<img src="{{ slide.image.url }}" alt="slide">
+			<div class="slider_desc">{{ slide.title }} </div>
+		</div>
+		
+		{% endfor %}
+	</div>
+	
+	
+	<h1 class="title main__title">Создаём то,<br> что имеет значение</h1>
+
+	
+</section>
+
+<section class="about">
+	<div class="container">
+		<div class="about__wrapper">
+			<h2 class="title about__title">Ojar Aziýa – это многопрофильный холдинг, реализующий масштабные проекты в сферах автодорожного строительства, транспортно-логистических услуг, жилой и промышленной застройки, а также коммунальной инфраструктуры.</h2>
+			<a href="{% url "about" %}" class="about__btn">Подробнее</a>
+		</div>
+	</div>
+</section>
+
+<section class="news">
+	<div class="container">
+		<div class="title news__title">Последние новости</div>
+	</div>
+	
+	<div class="news__wrapper swiper">
+		<div class="news__slider swiper-wrapper">
+			{% for news in news %}
+			<div class="news__item swiper-slide ">
+				<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
+				<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
+				<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
+			</div>
+			{% endfor %} 
+
+		</div>
+		<div class="swiper-pagination"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
+	
+</section>
+
+<section class="video">
+	<div class="container">
+		<div class="video__container">
+			<div class="video__left">
+				<h4 class="video__title">Ключевой проект</h4>
+				<h3 class="video__name">{{ videos.title }}</h3>
+				<div class="video__descr">{{ videos.text|safe }}</div>
+							</div>
+			<div class="video__right">
+				<div id="player" class="video__player" data-video-url="{{ videos.video.url }}" data-poster-url="{{ videos.image.url }}"></div>
+			</div>
+		</div>
+		
+	</div>
+</section>
+
+
+<section class="projects">
+	<div class="container">
+		<div class="projects__top">
+			<h3 class="projects__title title">Текущие проекты</h3>
+			<a href="{% url "current-projects" %}" class="projects__link">Все проекты <i class="fa-solid fa-arrow-right"></i></a>
+		</div>
+		<div class="projects__wrapper">
+			{% for project in projects %}
+			<div class="projects__item">
+				<div class="projects__left">
+					<img src="{{ project.image.url }}" alt="projects Image" class="projects__img">
+				</div>
+				<div class="projects__right">
+					<a href="{{ project.get_absolute_url }}"><h2 class="projects__subTitle">{{ project.title }}</h2></a>
+					<div class="projects__text">{{ project.text|safe }}</div>
+					<a href="{{ project.get_absolute_url }}" class="projects__btn"><i class="fa-solid fa-arrow-right-long"></i></a>
+				</div>
+			</div>
+			{% endfor %}
+			
+		</div>
+	</div>
+</section>
+
+
+
+
+<section class="awards">
+	<div class="container">
+		<div class="awards__title">Награды</div>
+		<div class="awards__wrapper">
+			<div class="swiper-wrapper">
+				{% for award in awards %}
+				<div class="awards__item swiper-slide">
+					<div class="awards__image">
+						<img src="{{ award.image.url }}" alt="Award">
+					</div>
+					<div class="awards__subtitle">{{ award.title }}</div>
+					<div class="awards__desc">{{ award.text|safe }}</div>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+	</div>
+</section>
+
+
+<section class="contact">
+	<div class="container">
+		<div class="contact__wrapper">
+			<div class="contact__title">Задать вопрос</div>
+			<div class="contact__text">Есть вопрос или хотите связаться с командой Ojar Aziya? Мы всегда рады помочь — напишите нам!</div>
+			<a href="{% url "contacts" %}" class="contact__btn">Связаться</a>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+{% endblock main %}
+
+{% block extrajs %}
+<script src="{% static 'home/js/home.js' %}"></script>
+{% endblock extrajs %}

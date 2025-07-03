@@ -1,0 +1,33 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/css/news.css' %}"> 
+{% endblock extracss %}
+
+{% block main %}
+
+<section class="news">
+	<div class="container">
+		<div class="news__wrapper">
+			{% for news in news %}
+			<div class="news__item">
+				<a href="{{ news.get_absolute_url }}" class="news__img"><img src="{{ news.image.url }}" alt="news__image" ></a>
+				<div class="news__bottom">
+					<a href="{{ news.get_absolute_url }}" class="news__title"><h3 >{{ news.title }}</h3></a>
+					<a href="{{ news.get_absolute_url }}" class="news__button">Read more</a>
+				</div>
+				
+			</div>
+			{% endfor %}
+			
+		</div>
+	</div>
+</section>
+
+{% endblock main %}
+
+{% block extrajs %}
+<script src="{% static 'news/js/news.js' %}"></script>
+{% endblock extrajs %}

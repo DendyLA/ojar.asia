@@ -1,0 +1,36 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'projects/css/projectsCurrent.css' %}">
+{% endblock extracss %}
+
+{% block main %}
+
+<section class="projects">
+	<div class="container">
+		<h2 class="projects__title">Выполненные проекты</h2>
+		<div class="projects__wrapper">
+			{% for project in projects %}
+			<a href="{{ project.get_absolute_url }}" class="projects__item">
+				<div class="projects__img">
+					<img src="{{ project.image.url }}" alt="projects__img">
+				</div>
+				<div class="projects__bottom">
+					<div class="projects__name">{{ project.title }}</div>
+					<div class="projects__location">{{ project.location }}</div>
+				</div>
+				
+			</a>
+			{% endfor %}
+			
+		</div>
+	</div>
+</section>
+
+{% endblock main %}
+
+{% block extrajs %}
+<script src="{% static 'projects/js/projectsCurrent.js' %}"></script>
+{% endblock extrajs %}

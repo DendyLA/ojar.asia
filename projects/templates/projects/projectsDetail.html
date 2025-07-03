@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'projects/css/projectsDetail.css' %}"> 
+{% endblock extracss %}
+
+{% block main %}
+
+<section class="projects">
+	<div class="container">
+		<div class="projects__wrapper">
+			<h1 class="projects__title">{{ projects.title }}</h1>
+			<img src="{{ projects.image.url }}" alt="" class="projects__img">
+			<div class="projects__descr">{{ projects.text|safe }}</div>
+		</div>
+	</div>
+</section>
+
+{% endblock main %}
+
+{% block extrajs %}
+<script src="{% static 'projects/js/projectsDetail.js' %}"></script>
+{% endblock extrajs %}

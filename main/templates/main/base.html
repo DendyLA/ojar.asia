@@ -1,0 +1,106 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Обязательные мета-теги -->
+    <meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+    {% block meta %}{% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon">
+	<!-- Bootstrap, иконки и шрифт -->  
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/slick.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/slick-theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/container.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/fa.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/swiper.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/fancybox.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/leaflet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/base.css' %}">
+
+	{% block extracss %}{% endblock %}
+    
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="header">
+				<a href="{% url "home" %}" class="logo">
+					<img src="{% static 'main/img/logo.png' %}" alt="logo">
+				</a>
+				<div class="header__right">
+					<ul class="nav__top">
+						<li class="nav__item nav__item_thin"><a href="{% url "contacts" %}">Контакты</a></li>
+					</ul>
+					<div class="nav__separator"></div>
+					<ul class="nav">
+						<li class="nav__item">
+							<a href="{% url "about" %}">О нас</a>
+						</li>
+						<li class="nav__item">
+							<a href="{% url "directions" %}" >Деятельность</a>
+						</li>
+						<li class="nav__item">
+							<a href="" class="activeNav">Проекты</a>
+							<ul class="sub-nav">
+								<li class="sub-nav__item"><a href="{% url "current-projects" %}">Текущие проекты</a></li>
+								<li class="sub-nav__item"><a href="{% url "not-current-projects" %}">Выполненные проекты</a></li>
+							</ul>
+						</li>
+						<li class="nav__item">
+							<a href="" class="activeNav">Пресс-центр</a>
+							<ul class="sub-nav">
+								<li class="sub-nav__item"><a href="{% url "news-all" %}">Новости</a></li>
+								<li class="sub-nav__item"><a href="{% url "gallery" %}">Галерея</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</header>
+	{% block main %}
+
+	{% endblock main %}
+    
+	<footer>
+		<div class="container">
+			<div class="footer">
+				<div class="footer__left">
+					<div class="company">Ojar Aziya</div>
+					<div class="rights">Все права защищены</div>
+				</div>
+				<div class="footer__media">
+					<div class="media__item"><a href=""><i class="fa-brands fa-facebook-f"></i></a></div>
+					<div class="media__item"><a href=""><i class="fa-brands fa-instagram"></i></a></div>
+					<div class="media__item"><a href=""><i class="fa-brands fa-linkedin-in"></i></a></div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+    <!-- Дополнительные скрипты JavaScript -->
+	<script src="{% static 'main/js/jquery.min.js' %}"></script>
+	<script src="{% static 'main/js/jquery-migrate.min.js' %}"></script>
+	<script src="{% static 'main/js/slick.min.js' %}"></script>
+	<script src="{% static 'main/js/fa.js' %}"></script>
+	<script src="{% static 'main/js/swiper.js' %}"></script>
+	<script src="{% static 'main/js/swiper-bundle.min.js' %}"></script>
+	<script src="{% static 'main/js/playerjs.js' %}"></script>
+	<script src="{% static 'main/js/fancybox.umd.js' %}"></script>
+	<script src="{% static 'main/js/leaflet.js' %}"></script>
+    <script src="{% static 'main/js/base.js' %}"></script>
+	
+	{% block extrajs %}{% endblock %}
+</body>
+</html>

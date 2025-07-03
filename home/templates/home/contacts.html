@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/contacts.css' %}">
+{% endblock extracss %}
+
+
+{% block main %}
+
+<section class="contacts">
+	<div class="container">
+		<div class="contacts__wrapper">
+			<div class="contacts__title">Телефон</div>
+			<a href="tel:+99312345678" class="contacts__tel">+99312345678</a>
+			<div class="contacts__title">Емейл</div>
+			<a href="mailto:info@ojar.asia" class="contacts__email">info@ojar.asia</a>
+		</div>
+	</div>
+	<div class="contacts__map">
+		<div id="map" class="map" data-pin-url="{% static 'home/img/pin.png' %}"></div>
+	</div>
+</section>
+
+{% endblock main %}
+
+{% block extrajs %}
+<script src="{% static 'home/js/contacts.js' %}"></script>
+{% endblock extrajs %}

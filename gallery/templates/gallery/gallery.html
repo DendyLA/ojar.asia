@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'gallery/css/gallery.css' %}"> 
+{% endblock extracss %}
+
+{% block main %}
+
+<section class="gallery">
+	<div class="container">
+		<div class="gallery__title">Галерея</div>
+		<div class="gallery__wrapper">
+			{% for gallery in gallery %}
+			<a  data-fancybox="gallery" 
+				data-src="{{ gallery.image.url}}"
+				class="gallery__item">
+				<img src="{{ gallery.image.url}}" alt="{{ gallery.title }}" />
+			</a>
+			{% endfor %}
+			
+		</div>
+	</div>
+</section>
+
+{% endblock main %}
+
+{% block extrajs %}
+<script src="{% static 'gallery/js/gallery.js' %}"></script>
+{% endblock extrajs %}

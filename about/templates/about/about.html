@@ -1,0 +1,87 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'about/css/about.css' %}">
+{% endblock extracss %}
+
+{% block main %}
+
+<section class="about">
+	{% for main in main %}
+	<div class="about__text">
+		<div class="container">
+			<h2 class="about__title">{{ main.title }}</h2>
+			<h1 class="about__desc">{{ main.text|safe }} </h1>
+		</div>
+	</div>
+	
+	<div class="about__video">
+		<video id="fastVideo" autoplay loop muted playsinline width="640" height="360">
+			<source src="{{ main.video.url }}" type="video/mp4">
+			Ваш браузер не поддерживает тег video.
+		</video>
+	</div>
+	{% endfor %}
+	
+</section>
+
+<section class="info">
+	<div class="container">
+		<div class="info__wrapper">
+			<div class="info__left">
+				<h3 class="info__title">Кто мы</h3>
+				<div class="info__desc">Индивидуальное предприятие «Ojar Aziýa» - это лидер на рынке строительства Туркменистана. Компания ведет свою работу с 2008 года и имеет колоссальный опыт по строительству зданий и сооружений. Визитной карточкой «Ojar Aziýa» являются высокая скорость и неизменно высокое качество работы.<br/><br/>  Деятельность предприятия сфокусирована на нескольких направлениях:
+<br/>•	Проектирование зданий, дорог и мостов 
+<br/>•	Строительство жилых, общественных зданий, а также дорог и мостов разных категорий
+<br/>•	Производство строительных материалов
+<br/>•	Техника и транспортные услуги
+</div>
+				<a href="{% url "directions" %}" class="info__btn">Наши компании</a>
+			</div>
+			<div class="info__right">
+				{% for info in info %}
+				<div class="info__item">
+					<div class="info__num">{{ info.number }}</div>
+					<div class="info__category">{{ info.category }}</div>
+				</div>
+				{% endfor %}
+				
+			</div>
+		</div>
+		
+	</div>
+</section>
+
+
+<section class="comment">
+	<div class="container">
+		<div class="comment__wrapper">
+		{% for comment in comments %}
+		<div class="comment__item">
+			<div class="comment__left">
+				<img src="{{ comment.image.url }}" alt="photo of the CEO">
+			</div>
+			<div class="comment__right">
+				<div class="comment__icon"><i class="fa-solid fa-quote-left"></i></div>
+				<div class="comment__text">{{ comment.text|safe }}</div>
+				<div class="comment__name">
+					<h3 class="comment_author">{{ comment.author }}</h3>
+					<div class="comment__position">{{ comment.position }}</div>	
+				</div>
+				
+			</div>
+		</div>
+		{% endfor %}
+		
+	</div>
+	</div>
+	
+</section>
+
+{% endblock main %}
+
+{% block extrajs %}
+<script src="{% static 'about/js/about.js' %}"></script>
+{% endblock extrajs %}

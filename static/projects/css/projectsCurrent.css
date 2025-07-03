@@ -1,0 +1,128 @@
+.projects{
+	padding: 5rem;
+}
+
+.projects__title{
+	font-size: 4rem;
+	font-weight: 600;
+	color: #00A850;
+	margin-bottom: 4rem;
+}
+
+.projects__wrapper{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2.5rem;
+	flex-wrap: wrap;
+}
+
+.projects__item{
+	width: 30%;
+	height: 490px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 2rem;
+	overflow: hidden;
+	box-shadow: 0px 8px 16px rgba(0, 0, 0, .3);
+}
+
+.projects__img{
+	width: 100%;
+	height: 70%;
+	overflow: hidden;
+}
+
+.projects__img img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	transition: all .3s;
+}
+
+.projects__bottom{
+	padding: 2rem 3rem 4rem 3rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.projects__img img:hover {
+  	transform: scale(1.04);
+}
+
+.projects__name{
+	font-size: 2rem;
+	font-weight: 500;
+
+}
+
+.projects__location{
+	font-size: 1.7;
+	font-weight: 300;
+}
+
+@media (max-width: 419px) {
+	.projects__item img {
+		height: 53%;
+	}
+	.projects__item{
+		height: 300px;
+		width: 100%;
+	}
+	.projects__title {
+  		font-size: 3rem;
+	}
+	.projects {
+  		padding: 2rem;
+	}
+ }
+/* Мобильные устройства (до 576px) */
+@media (min-width: 420px) and (max-width: 575px) {
+	.projects__item img {
+		height: 53%;
+	}
+	.projects__item{
+		height: 300px;
+		width: 100%;
+	}
+	.projects__title {
+  		font-size: 3rem;
+	}
+ }
+
+/* Планшеты (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) { 
+	.projects__item img {
+		height: 53%;
+	}
+	.projects__item{
+		height: 420px;
+		width: 47%;
+	}
+}
+
+/* Малые ноутбуки / планшеты в альбомной */
+@media (min-width: 768px) and (max-width: 991px) { 
+	.projects__item img {
+		height: 53%;
+	}
+	.projects__item{
+		height: 420px;
+	}
+}
+
+/* Ноутбуки / Десктопы */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.projects__item img {
+		height: 53%;
+	}
+	.projects__item{
+		height: 450px;
+	}
+}
