@@ -135,7 +135,7 @@
 	align-items: flex-start;
 	max-width: 432px;
 	overflow: hidden;
-	height: 700px;
+	min-height: 683px;
 }
 
 .news__img{
@@ -170,6 +170,11 @@
 	font-weight: 600;
 	cursor: pointer;
 	transition: all .3s;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; 
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .news__desc:hover{
@@ -315,7 +320,7 @@
 
 .projects__left{
 	width: 60%;
-	height: 650px;
+	min-height: 600px;
 	overflow: hidden;
 }
 
@@ -371,7 +376,7 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 4rem;
-	max-height: 500px;
+	min-height: 500px;
 	margin: 0 auto;
 	background-color: #e8e8e8;
 }
@@ -450,16 +455,26 @@
 }
 
 .awards__item{
-	height: 740px;
+	height: 650px;
+	width: 650px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 3rem;
+	margin: 2rem;
+	padding: 2.5rem;
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+	border-radius: 2rem;
+}
+
+.awards__text{
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	gap: 3rem;
+	gap: 2rem;
 }
 
 .awards__image{
-	height: 50%;
+	height: 100%;
 	width: 100%;
 }
 

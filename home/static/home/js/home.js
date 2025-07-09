@@ -54,42 +54,10 @@ const swiperNews = new Swiper('.swiper', {
   }
 })
 
+
 //Awards
-const swiperAwards = new Swiper('.awards__wrapper', {
-	slidesPerView: 4	,
-	centeredSlides: false,
-	spaceBetween: 40,
-	initialSlide: 0,
-	
-	// Эффект перехода
-	slideToClickedSlide: true,
-	
-	// Навигация
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
-	
-	// Пагинация
-	pagination: {
-		el: '.swiper-pagination',
-		clickable: true,
-		dynamicBullets: true,
-		type: "progressbar"
-	},
-	// События
-	
-})
-
-
- document.addEventListener("DOMContentLoaded", function() {
-	const playerElement = document.getElementById("player");
-	const videoUrl = playerElement.dataset.videoUrl;
-	const posterUrl = playerElement.dataset.posterUrl;
-
-	let player = new Playerjs({
-		id: "player",
-		file: videoUrl,
-		poster: posterUrl
-	});
+new Glider(document.querySelector('.awards__wrapper'), {
+	slidesToShow: 'auto',
+	slidesToScroll: 'auto',
+	draggable: true,
 });

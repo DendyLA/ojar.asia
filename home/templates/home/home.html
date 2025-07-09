@@ -106,20 +106,18 @@
 	<div class="container">
 		<div class="awards__title">Награды</div>
 		<div class="awards__wrapper">
-			<div class="swiper-wrapper">
-				{% for award in awards %}
-				<div class="awards__item swiper-slide">
-					<div class="awards__image">
-						<img src="{{ award.image.url }}" alt="Award">
-					</div>
+			{% for award in awards %}
+			<div class="awards__item">
+				<div class="awards__image">
+					<img src="{{ award.image.url }}" alt="Award">
+				</div>
+				<div class="awards__text">
 					<div class="awards__subtitle">{{ award.title }}</div>
 					<div class="awards__desc">{{ award.text|safe }}</div>
 				</div>
-				{% endfor %}
+				
 			</div>
-			<div class="swiper-pagination"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+			{% endfor %}
 		</div>
 	</div>
 </section>
