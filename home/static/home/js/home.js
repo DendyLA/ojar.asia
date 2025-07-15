@@ -33,7 +33,7 @@ new Glider(document.querySelector('.news__slider'), {
 	},
 	responsive: [
 		{
-			// при ширине экрана <= 1024px
+
 			breakpoint: 1200,
 			settings: {
 				slidesToShow: 3,
@@ -41,16 +41,16 @@ new Glider(document.querySelector('.news__slider'), {
 			}
 		},
 		{
-			// при ширине <= 768px
-			breakpoint: 768,
+
+			breakpoint: 992,
 			settings: {
 				slidesToShow: 2,
 				slidesToScroll: 2
 			}
 		},
 		{
-			// при ширине <= 480px
-			breakpoint: 480,
+
+			breakpoint: 768,
 			settings: {
 				slidesToShow: 1,
 				slidesToScroll: 1
@@ -75,9 +75,9 @@ new Glider(document.querySelector('.awards__wrapper'), {
 		},
 		{
 			// при ширине <= 768px
-			breakpoint: 768,
+			breakpoint: 992,
 			settings: {
-				itemWidth: 620,
+				itemWidth: 360,
 			}
 		},
 		{
