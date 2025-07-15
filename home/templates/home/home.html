@@ -38,22 +38,49 @@
 <section class="news">
 	<div class="container">
 		<div class="title news__title">Последние новости</div>
-	</div>
-	
-	<div class="news__wrapper swiper">
-		<div class="news__slider swiper-wrapper">
-			{% for news in news %}
-			<div class="news__item swiper-slide ">
-				<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
-				<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
-				<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
-			</div>
-			{% endfor %} 
 
+		<div class="news__wrapper">
+			<div class="news__slider">
+				{% for news in news %}
+				<div class="news__item">
+					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
+					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
+					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
+				</div>
+
+				<div class="news__item">
+					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
+					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
+					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
+				</div>
+				<div class="news__item">
+					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
+					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
+					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
+				</div>
+				<div class="news__item">
+					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
+					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
+					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
+				</div>
+				<div class="news__item">
+					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
+					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
+					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
+				</div>
+				{% endfor %} 
+			</div>
+			<div class="news__dots"></div>
+			<button class="slider__prev">
+				<i class="fa-solid fa-angle-left arrows"></i>
+			</button>
+			<button class="slider__next">
+				<i class="fa-solid fa-angle-right arrows"></i>
+			</button>
+			
 		</div>
-		<div class="swiper-pagination"></div>
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
+	
+		
 	</div>
 	
 </section>

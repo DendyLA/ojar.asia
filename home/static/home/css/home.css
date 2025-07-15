@@ -11,7 +11,7 @@
 .main{
 	position: relative;
 	width: 100vw;
-	height: calc(100vh - var(--header-height));
+	height: 100vh;
 	overflow: hidden;
 }
 
@@ -26,13 +26,13 @@
 .slider__item{
 	width: 100%;
 	height: 100%;
+	position: relative;
 }
 
 .slider__item img{
 	width: 100%;
 	height: 100%;
 	object-fit: cover; /* Сохраняет пропорции */
-	object-position: 0px -120px;
 	transition: transform 0.5s ease;
 }
 
@@ -126,6 +126,12 @@
 	max-height: 800px;
 	background-color: #fff;
 	padding-bottom: 5rem;
+	position: relative;
+	margin-top: 3rem;
+}
+
+.news__slider{
+	overflow-x: hidden;
 }
 
 .news__item{
@@ -136,6 +142,72 @@
 	max-width: 432px;
 	overflow: hidden;
 	min-height: 683px;
+	margin-right: 4rem;
+}
+
+.slider__prev, .slider__next{
+	all: unset;
+	cursor: pointer;
+	position: absolute;
+	border: #008c44 2px solid;
+	background-color: #008c44;
+	border-radius: 1rem;
+	width: 6rem;
+	height: 6rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all .3s;
+	
+}
+
+.slider__prev:hover, .slider__next:hover{
+	background-color: #fff;
+}
+
+.slider__prev:hover .arrows, .slider__next:hover .arrows{
+	color: #008c44;
+}
+
+
+.slider__prev{
+	top: 50%;
+	left: -100px;
+}
+
+.slider__next{
+	top: 50%;
+	right: -60px;
+}
+
+.arrows{
+	font-size: 4rem;
+	color: #fff;
+	transition: all .3s;
+}
+
+.slider__prev.disabled{
+	background-color: #008f452b;
+	border: #008f452b 2px solid;
+}
+.slider__prev.disabled:hover .arrows{
+	color: #fff;
+}
+
+.slider__next.disabled{
+	background-color: #008f452b;
+	border: #008f452b 2px solid;
+}
+.slider__next.disabled:hover .arrows{
+	color: #fff;
+}
+
+.news__dots{
+	margin-top: 6rem;
+}
+
+.news__dots .glider-dot.active{
+	background-color: #008c44;
 }
 
 .news__img{
@@ -465,17 +537,19 @@
 	padding: 2.5rem;
 	box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
 	border-radius: 2rem;
+	background-color: #fff;
 }
 
 .awards__text{
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	width: 50%;
 }
 
 .awards__image{
 	height: 100%;
-	width: 100%;
+	width: 50%;
 }
 
 .awards__image img{
@@ -944,7 +1018,7 @@
 /* Большие десктопы */
 @media (min-width: 1200px) {
 	.news__item{
-		width: 400px !important;
+		width: 400px;
 		height: 683px;
 	}
 	.projects__left{
@@ -953,4 +1027,13 @@
 	.main__title{
 		left: 14rem;
 	}
+	.slider__next{
+		top: 91%;
+ 	 	right: 315px;
+	}
+	.slider__prev{
+		top: 91%;
+  		left: 315px;
+	}
+
  }

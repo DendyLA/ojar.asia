@@ -1,63 +1,114 @@
-$('.slider').slick({
-	dots: false,
-	infinite: true,
-	autoplay: true,
-	autoplaySpeed: 3000,
-	speed: 500,       // Уменьшено с 500 мс
-	fade: true,
-	cssEase: 'linear',
-	waitForAnimate: false, // Важно для плавности
-	pauseOnHover: false,   // Отключаем паузу при наведении
-	pauseOnFocus: false    // Отключаем паузу при фокусе
-});
-//News
-const swiperNews = new Swiper('.swiper', {
-	slidesPerView: 4,
-	centeredSlides: true,
-	spaceBetween: 40,
-	initialSlide: 0,
-	
-	// Эффект перехода
-	slideToClickedSlide: true,
-	
-	// Навигация
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
-	
-	// Пагинация
-	pagination: {
-		el: '.swiper-pagination',
-		clickable: true,
-		dynamicBullets: true,
-		type: "progressbar"
-	},
-	// События
-	breakpoints: {
-    // when window width is <= 767px
-    0: {
-      slidesPerView: 2,
-      centeredSlides: true,
-      spaceBetween: 20
-    },
-    // планшеты
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 30
-    },
-    // десктоп
-    992: {
-      slidesPerView: 4,
-      spaceBetween: 40
-    }
-  }
+
+//Main
+// $('.slider').slick({
+// 	slidesToShow: 1,
+// 	slidesToScroll: 1,
+// 	autoplay: true,
+// 	autoplaySpeed: 4000,
+// 	infinite: true,
+// 	draggable: false,
+// })
+
+const mainSlider = new Glider(document.querySelector('.slider'), {
+	slidesToScroll: 1,
+	slidesToShow: 1,
+	draggable: false,
+
 })
 
+setInterval(() => {
+  	mainSlider.scrollItem((mainSlider.page + 1) % mainSlider.slides.length);
+}, 4000);
+
+
+//News
+new Glider(document.querySelector('.news__slider'), {
+	slidesToScroll: 4,
+	slidesToShow: 4,
+	draggable: true,
+	dots: '.news__dots',
+	arrows: {
+		prev: '.slider__prev',
+		next: '.slider__next'
+	},
+	responsive: [
+		{
+			// при ширине экрана <= 1024px
+			breakpoint: 1200,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 3
+			}
+		},
+		{
+			// при ширине <= 768px
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		},
+		{
+			// при ширине <= 480px
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}
+	]
+});
 
 //Awards
 new Glider(document.querySelector('.awards__wrapper'), {
 	slidesToShow: 'auto',
 	slidesToScroll: 'auto',
 	draggable: true,
+	itemWidth: 620,
+	responsive: [
+		{
+			// при ширине экрана <= 1024px
+			breakpoint: 1200,
+			settings: {
+				itemWidth: 420,
+			}
+		},
+		{
+			// при ширине <= 768px
+			breakpoint: 768,
+			settings: {
+				itemWidth: 620,
+			}
+		},
+		{
+			// при ширине <= 480px
+			breakpoint: 480,
+			settings: {
+				itemWidth: 620,
+			}
+		}
+	]
 });
+
+//video
+const container = document.getElementById("player");
+    const videoUrl = container.dataset.videoUrl;
+    const posterUrl = container.dataset.posterUrl;
+
+    if (videoUrl) {
+        const video = document.createElement("video");
+        video.src = videoUrl;
+        video.poster = posterUrl || "";
+        video.controls = true;
+        video.style.width = "100%";
+        video.style.height = "auto";
+
+        // необязательные параметры
+        // video.autoplay = true;
+        // video.muted = true;  // нужно для autoplay в Chrome
+        // video.loop = true;
+
+        container.appendChild(video);
+    } else {
+        container.innerText = "Видео не найдено.";
+    }
