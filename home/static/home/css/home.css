@@ -141,7 +141,7 @@
 	align-items: flex-start;
 	max-width: 432px;
 	overflow: hidden;
-	min-height: 683px;
+	min-height: 585px;
 	margin-right: 4rem;
 }
 
@@ -630,11 +630,12 @@
 
 @media (max-width: 419px) {
 	.main {
- 	 	height: calc(26vh - var(--header-height));
+ 	 	height: 200px;
 	}
 	.news__item{
 		width: 300px !important;
 		height: 600px;
+		margin-right: 1rem;
 	}
 	.news__img{
 		width: 100%;
@@ -644,8 +645,8 @@
 		height: 450px;
 	}
 	.main__title{
-		top: 0.4rem;
-		left: 5rem;
+		top: 10.4rem;
+    	left: 2rem;
 		font-size: 2rem;
 	}
 	.slider_desc{
@@ -655,6 +656,7 @@
 	}
 	.about__title {
   		font-size: 1.5rem;
+		width: 100%;
 	}
 	.about__btn{
 		width: 140px;
@@ -698,30 +700,6 @@
 	.awards__desc{
 		font-size: 1rem;
 	}
-	.projects__item{
-		gap: 3rem;
-	}
-	.projects__left{
-		height: 200px;
-	}
-	.projects__right{
-		gap: 2rem;
-	}
-	.projects__btn{
-		font-size: 2rem;
-	}
-	.projects__text{
-		font-size: 0.8rem;
-	}
-	.projects__subTitle{
-		font-size: 1.2rem;
-	}
-	.projects__title{
-		font-size: 2rem;
-	}
-	.projects__link{
-		font-size: 1.5rem;
-	}
 	.contact__title {
 		font-size: 2rem;
 	}
@@ -738,20 +716,62 @@
 		height: 45px;
 		font-size: 1.5rem;
 	}
-
-	/* there is error  */
-	.awards{
+	.projects__title{
+		font-size: 2rem;
+		width: 100px;
+	}
+	.projects__link{
+		font-size: 1.4rem;
+	}
+	.projects__item{
+		flex-direction: column;
+		gap: 3rem;
+	}
+	.projects__item:nth-child(2n){
+		flex-direction: column;
+	}
+	.projects__left, .projects__right{
+		width: 100%;
+	}
+	.projects__left{
+		min-height: 250px;
+		height: 240px;
+	}
+	.projects__right{
+		align-items: flex-start;
+		gap: 3rem;
+	}
+	.slider__next{
 		display: none;
 	}
-
-	.news{
-		display: none;
+	.projects__subTitle {
+		font-size: 2.4rem;
+	}
+	.projects__text{
+		font-size: 2rem;
+	}
+	.projects__btn{
+		font-size: 3rem;
+	}
+	.awards__item{
+		margin: 1rem;
+		flex-direction: column;
+	}
+	.awards__image, .awards__text{
+		width: 100%;
+		height: 100%;
+	}
+	.awards__subtitle{
+		font-size: 1.5rem;
+	}
+	.awards__desc{
+		font-size: 1.3rem;
 	}
  }
 /* Мобильные устройства (до 576px) */
 @media (min-width: 420px) and (max-width: 575px) {
 	.main {
- 	 	height: calc(35vh - var(--header-height));
+ 	 	height: 300px;;
 	}
 	.news__item{
 		width: 300px !important;
@@ -765,9 +785,9 @@
 		height: 450px;
 	}
 	.main__title{
-		top: 2rem;
-		left: 5rem;
-		font-size: 2rem;
+		top: 19rem;
+    	left: 3rem;
+		font-size: 3rem;
 	}
 	.slider_desc{
 		top: 1rem;
@@ -776,11 +796,15 @@
 	}
 	.about__title {
   		font-size: 1.5rem;
+		width: 100%;
 	}
 	.about__btn{
 		width: 140px;
 		font-size: 1.5rem;
 		height: 45px;
+	}
+	.video{
+		padding: 0;
 	}
 	.video__title{
 		font-size: 1.5rem;
@@ -801,7 +825,7 @@
 		flex-direction: column;
 	}
 	.video__left{
-		padding: 3rem 0 3rem 3rem;
+		padding: 3rem 3rem 3rem 3rem;
 		width: 100%;
 	}
 	.video__right{
@@ -819,29 +843,35 @@
 	.awards__desc{
 		font-size: 1rem;
 	}
-	.projects__item{
-		gap: 3rem;
-	}
-	.projects__left{
-		height: 250px;
-	}
-	.projects__right{
-		gap: 2rem;
-	}
-	.projects__btn{
-		font-size: 2.5rem;
-	}
-	.projects__text{
-		font-size: 1rem;
-	}
-	.projects__subTitle{
-		font-size: 1.6rem;
-	}
 	.projects__title{
-		font-size: 2rem;
+		font-size: 3rem;
 	}
 	.projects__link{
-		font-size: 1.5rem;
+		font-size: 1.6rem;
+	}
+	.projects__item{
+		flex-direction: column;
+		gap: 3rem;
+	}
+	.projects__item:nth-child(2n){
+		flex-direction: column;
+	}
+	.projects__left, .projects__right{
+		width: 100%;
+	}
+	.projects__left{
+		min-height: 250px;
+		height: 215px;
+	}
+	.projects__right{
+		align-items: flex-start;
+		gap: 3rem;
+	}
+	.slider__next{
+		display: none;
+	}
+	.projects__subTitle {
+ 		 font-size: 3rem;
 	}
 	.contact__title {
 		font-size: 2rem;
@@ -860,14 +890,6 @@
 		font-size: 1.5rem;
 	}
 
-	/* there is error  */
-	.awards{
-		display: none;
-	}
-
-	.news{
-		display: none;
-	}
  }
 
 /* Планшеты (576px - 767px) */
@@ -887,8 +909,8 @@
 		height: 450px;
 	}
 	.main__title{
-		top: 3rem;
-		left: 10rem;
+		top: 13rem;
+		left: 5rem;
 		font-size: 3rem;
 	}
 	.slider_desc{
@@ -912,10 +934,17 @@
   		height: 45px;
 	}
 	.video__container{
+		min-height: 0;
 		gap: 2rem;
+		flex-direction: column;
 	}
 	.video__left{
 		padding: 3rem 0 3rem 3rem;
+		width: 100%;
+		padding: 3rem;
+	}
+	.video__right{
+		width: 100%;
 	}
 	.awards__item{
 		height: 700px;
@@ -929,29 +958,42 @@
 	.awards__desc{
 		font-size: 1rem;
 	}
+	.projects__title{
+		font-size: 3rem;
+	}
+	.projects__link{
+		font-size: 1.6rem;
+	}
 	.projects__item{
+		flex-direction: column;
 		gap: 3rem;
+	}
+	.projects__item:nth-child(2n){
+		flex-direction: column;
+	}
+	.projects__left, .projects__right{
+		width: 100%;
 	}
 	.projects__left{
-		height: 350px;
+		min-height: 250px;
 	}
 	.projects__right{
+		align-items: flex-start;
 		gap: 3rem;
 	}
-	.projects__btn{
-		font-size: 2.5rem;
-	}
-	.projects__text{
-		font-size: 1.5rem;
-	}
-	.projects__subTitle{
-		font-size: 2rem;
-	}
-
-	/* there is error  */
-	.awards{
+	.slider__next{
 		display: none;
 	}
+	.projects__subTitle {
+ 		 font-size: 3rem;
+	}
+	.slider__prev{
+		display: none;
+	}
+	.about__title{
+  		font-size: 2rem;
+	}
+
 }
 
 /* Малые ноутбуки / планшеты в альбомной */
