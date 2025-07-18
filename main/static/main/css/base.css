@@ -206,8 +206,30 @@ header.fixed + .header-placeholder {
 
 /* Большие десктопы */
 @media (max-width: 419px) {
+	.header__right{
+		opacity: 0;
+		position: absolute;
+		top: 90px;
+		left: 0	;
+		z-index: 1;
+		background-color: white;
+		width: 100vw;
+		align-items: flex-start;
+		padding: 1rem 1rem 1rem 2rem;
+		transition: all .3s;
+	}
+	.nav{
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
 	.nav__item a{
-		font-size: .6rem;
+		font-size: 1.3rem;
+	}
+	.header__active{
+		opacity: 1;
+	}
+	.sub-nav{
+		top: 100px;
 	}
 	.company {
 		font-size: 1rem;
@@ -221,8 +243,25 @@ header.fixed + .header-placeholder {
  }
 /* Мобильные устройства (до 576px) */
 @media (min-width: 420px) and (max-width: 575px) {
+	.header__right{
+		display: none;
+		position: absolute;
+		top: 90px;
+		left: 0	;
+		z-index: 1;
+		background-color: white;
+		width: 100vw;
+		align-items: flex-start;
+		padding: 1rem 1rem 1rem 2rem;
+	}
 	.nav__item a{
-		font-size: 1rem;
+		font-size: 1.4rem;
+	}
+	.header__active{
+		display: flex;
+	}
+	.sub-nav{
+		top: 73px;
 	}
  }
 

@@ -131,7 +131,8 @@
 }
 
 .news__slider{
-	overflow-x: hidden;
+	scrollbar-width: none;         /* Firefox */
+  	-ms-overflow-style: none;      /* IE и Edge */
 }
 
 .news__item{
@@ -143,6 +144,7 @@
 	overflow: hidden;
 	min-height: 585px;
 	margin-right: 4rem;
+	gap: 2rem;
 }
 
 .slider__prev, .slider__next{
@@ -726,7 +728,18 @@
 	.projects__item{
 		flex-direction: column;
 		gap: 3rem;
+		position: relative;
 	}
+	.projects__item::after{
+		content: '';
+		height: 2px;
+		background-color: #008c44;
+		border-radius: 3px;
+		position: absolute;
+		bottom: -20px;
+		width: 100%;
+	}
+
 	.projects__item:nth-child(2n){
 		flex-direction: column;
 	}
@@ -767,6 +780,10 @@
 	.awards__desc{
 		font-size: 1.3rem;
 	}
+	.news__title{
+		font-size: 3rem;
+	}
+
  }
 /* Мобильные устройства (до 576px) */
 @media (min-width: 420px) and (max-width: 575px) {
