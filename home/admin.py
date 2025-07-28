@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from parler.admin import TranslatableAdmin
 
 from . import models
 
 @admin.register(models.Slider)
-class SliderAdmin(admin.ModelAdmin):  # Исправлено: должно быть admin.ModelAdmin
+class SliderAdmin(TranslatableAdmin):  # Исправлено: должно быть admin.ModelAdmin
     list_display = ('preview', 'title', 'created_at')
     list_display_links = ('preview', 'title')
     readonly_fields = ('preview', 'created_at')  # Добавлено preview в readonly
@@ -35,7 +36,7 @@ class SliderAdmin(admin.ModelAdmin):  # Исправлено: должно бы�
     
 
 @admin.register(models.Videos)
-class VideosAdmin( admin.ModelAdmin):
+class VideosAdmin( TranslatableAdmin):
     list_display = ('preview', 'title')
     list_display_links = ('preview', 'title')
     readonly_fields = ('preview', 'created_at')
@@ -65,7 +66,7 @@ class VideosAdmin( admin.ModelAdmin):
     
 
 @admin.register(models.Awards)
-class AwardsAdmin( admin.ModelAdmin):
+class AwardsAdmin( TranslatableAdmin):
     list_display = ('preview', 'title')
     list_display_links = ('preview', 'title')
     readonly_fields = ('preview', 'created_at')
@@ -96,5 +97,15 @@ class AwardsAdmin( admin.ModelAdmin):
 
 
 
+
+@admin.register(models.ContactForm)
+class FormAdmin( admin.ModelAdmin):
+    list_display = ('name', 'phone', 'email', 'message')
+    list_display_links = ('name', 'phone', 'email')
+    readonly_fields = ( 'created_at', 'name', 'phone', 'email', 'message')
+
+    list_per_page = 20  # Добавлено для пагинации
+    search_fields = ('name',)
+    
 
 

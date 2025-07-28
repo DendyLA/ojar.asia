@@ -1,5 +1,5 @@
 {% extends "main/base.html" %}
-
+{% load i18n %}
 {% load static %}
 
 {% block extracss %}
@@ -7,15 +7,63 @@
 {% endblock extracss %}
 
 
+{% block title %}{% trans "Контакты" %}{% endblock %}
+{% block descr %}{% trans "Ojar Aziya - одна из крупнейших компаний в сфере строительства и инфраструктуры в Туркменистане." %}  {% endblock %}
+
 {% block main %}
 
 <section class="contacts">
 	<div class="container">
 		<div class="contacts__wrapper">
-			<div class="contacts__title">Телефон</div>
-			<a href="tel:+99312345678" class="contacts__tel">+99312345678</a>
-			<div class="contacts__title">Email</div>
-			<a href="mailto:info@ojar.asia" class="contacts__email">info@ojar.asia</a>
+			<div class="contacts__left">
+				<div class="contacts__title">{% trans "Телефон" %}</div>
+				<a href="tel:+99312345678" class="contacts__tel">+99312345678</a>
+				<div class="contacts__title">Email</div>
+				<a href="mailto:info@ojar.asia" class="contacts__email">info@ojar.asia</a>
+			</div>
+			<div class="contacts__right">
+				<form method="post" action="" class="contact-form" data-url="{% url 'contacts' %}">
+					{% csrf_token %}
+					<div id="form-messages"></div>
+					<div class="form__item">
+						<label for="id_name" class='form__text'>{% trans "Имя" %}</label>
+						<input type="text" name="name" id="id_name" value="{{ form.name.value|default_if_none:'' }}" required class='form__input'>
+					</div>
+					
+					<div class="form__middle">
+						<div class="form__item">
+							<label for="id_phone" class='form__text'>{% trans "Телефон" %}</label>
+							<input type="text" name="phone" id="id_phone" value="{{ form.phone.value|default_if_none:'' }}" required class='form__input'>
+						</div>
+						
+						<div class="form__item">
+							<label for="id_email" class='form__text'>Email </label>
+							<input type="email" name="email" id="id_email" value="{{ form.email.value|default_if_none:'' }}" class='form__input'>
+						</div>
+					</div>
+
+					
+					
+
+					<div class="form__item">
+						<label for="id_message" class='form__text'>{% trans "Сообщение" %} </label>
+						<textarea name="message" id="id_message" rows="5" required >{{ form.message.value|default_if_none:'' }}</textarea>
+					</div>
+					
+
+					<button type="submit" class="form__btn">{% trans "Отправить" %} </button>
+
+					<div class="popup {% if sent %} active{% endif %}">
+						<div class="popup__wrapper">
+							<div class="popup__close">
+								<i class="fa-solid fa-xmark popup__icon"></i>
+							</div>
+							<div class="popup__text">Спасибо, скоро с вами свяжутся!</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			
 		</div>
 	</div>
 	<div class="contacts__map">

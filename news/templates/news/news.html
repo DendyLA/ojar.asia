@@ -1,6 +1,12 @@
 {% extends "main/base.html" %}
 
 {% load static %}
+{% load i18n %}
+
+
+{% block title %}{% trans "Новости" %}{% endblock %}
+{% block descr %}{% trans "Ojar Aziýa – это многопрофильный холдинг, реализующий масштабные проекты в сферах автодорожного строительства, транспортно-логистических услуг, жилой и промышленной застройки, а также коммунальной инфраструктуры." %}{% endblock %}
+
 
 {% block extracss %}
 <link rel="stylesheet" type="text/css" href="{% static 'news/css/news.css' %}"> 
@@ -16,7 +22,7 @@
 				<a href="{{ news.get_absolute_url }}" class="news__img"><img src="{{ news.image.url }}" alt="news__image" ></a>
 				<div class="news__bottom">
 					<a href="{{ news.get_absolute_url }}" class="news__title"><h3 >{{ news.title }}</h3></a>
-					<a href="{{ news.get_absolute_url }}" class="news__button">Read more</a>
+					<a href="{{ news.get_absolute_url }}" class="news__button">{% trans "Подробнее" %} </a>
 				</div>
 				
 			</div>

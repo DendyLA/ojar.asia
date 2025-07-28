@@ -1,18 +1,18 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from parler.admin import TranslatableAdmin
 
 from . import models
 
 
 @admin.register(models.News)
-class NewsAdmin(admin.ModelAdmin):
+class NewsAdmin(TranslatableAdmin):
     list_display = ('preview', 'title', 'created_at','slug',)
     list_display_links = ('preview', 'title')
     readonly_fields = ('preview', 'created_at')  # Добавлено preview в readonly
     ordering = ('-created_at',)
     list_per_page = 20  # Добавлено для пагинации
     search_fields = ('title',)
-    prepopulated_fields = {'slug': ('title',)}  # Автозаполнение slug
     
 
     fieldsets = (
@@ -24,6 +24,9 @@ class NewsAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+
+    def get_prepopulated_fields(self, request, obj = None):
+        return {'slug': ('title',)}
 
     @admin.display(description="Превью")
     def preview(self, obj):

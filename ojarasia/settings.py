@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 import os
 
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
 	'django_cleanup.apps.CleanupConfig',
     'django.contrib.staticfiles',
+	'parler',
+	'django.contrib.sitemaps',
 	'ckeditor',
 	'main',
 	'home',
@@ -51,7 +53,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -121,17 +125,41 @@ CKEDITOR_CONFIGS = {
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
+
+SITE_ID = 1 
+
+LANGUAGES = (
+    ('en', _('Английский')),
+    ('ru', _('Русский')),
+    ('tk', _('Туркменский')),
+)
+
+PARLER_LANGUAGES = {
+    1: (  # ID сайта (SITE_ID)
+        {'code': 'en'},
+        {'code': 'ru'},
+        {'code': 'tk'},
+    ),
+    'default': {
+        'fallback': 'ru',  # язык по умолчанию
+        'hide_untranslated': False,  # показывать даже без перевода
+    }
+}
+
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',  # Папка для переводов
+]
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
+
 
 #Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'

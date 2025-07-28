@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from parler.admin import TranslatableAdmin
 
 from . import models
 
 @admin.register(models.Companies)
-class CompaniesAdmin(admin.ModelAdmin):  # Исправлено: должно быть admin.ModelAdmin
+class CompaniesAdmin(TranslatableAdmin):  # Исправлено: должно быть admin.ModelAdmin
     list_display = ('preview', 'title', 'created_at', 'link')
     list_display_links = ('preview', 'title', 'link')
     readonly_fields = ('preview', 'created_at')  # Добавлено preview в readonly

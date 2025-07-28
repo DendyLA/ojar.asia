@@ -1,6 +1,12 @@
 {% extends "main/base.html" %}
 
 {% load static %}
+{% load i18n %}
+
+
+{% block title %}{{ news.title }}{% endblock %}
+{% block descr %}{{ news.text|striptags|truncatechars:160 }}{% endblock %}
+
 
 {% block extracss %}
 <link rel="stylesheet" type="text/css" href="{% static 'news/css/newsDetail.css' %}"> 
@@ -11,7 +17,7 @@
 <section class="news">
 	<div class="container">
 		<div class="news__wrapper">
-			<a href="{% url "news-all" %}" class="news__link">Все новости</a>
+			<a href="{% url "news-all" %}" class="news__link">{% trans "Все новости" %}</a>
 			<h1 class="news__title">{{ news.title }}</h1>
 			<div class="news__time">{{ news.created_at|date:"F j, Y" }}</div>
 			<img src="{{ news.image.url }}" alt="news__image" class="news__img">

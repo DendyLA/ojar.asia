@@ -1,29 +1,31 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from parler.admin import TranslatableAdmin
 
 from . import models
 
 
 @admin.register(models.Projects)
-class ProjectsAdmin( admin.ModelAdmin):
+class ProjectsAdmin(TranslatableAdmin):
     list_display = ('preview', 'title', 'location', 'is_finish', 'slug',)
     list_display_links = ('preview', 'title', 'location')
     readonly_fields = ('preview', 'created_at', )
-
-    list_per_page = 20  # Добавлено для пагинации
-    search_fields = ('title', )
+    list_per_page = 20
+    search_fields = ('translations__title', )
     list_filter = ('is_finish', 'is_featured')
-    prepopulated_fields = {'slug': ('title',)}  # Автозаполнение slug
-    
-    fieldsets =(
+
+    fieldsets = (
         (None, {
-            'fields' : ('image', 'title','location' , 'text', 'is_finish', 'is_featured', 'slug')
+            'fields': ('image', 'title', 'location', 'text', 'is_finish', 'is_featured', 'slug')
         }),
         ('Дополнительно', {
-            'fields' : ('preview', 'created_at', ),
-            'classes' : ('collapse',)
+            'fields': ('preview', 'created_at',),
+            'classes': ('collapse',)
         }),
     )
+
+    def get_prepopulated_fields(self, request, obj=None):
+        return {'slug': ('title',)} 
 
     @admin.display(description='Превью')
     def preview(self, obj):

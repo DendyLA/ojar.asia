@@ -9,17 +9,21 @@
 // 	draggable: false,
 // })
 
-const mainSlider = new Glider(document.querySelector('.slider'), {
+const slider = document.querySelector('.slider');
+const mainSlider = new Glider(slider, {
 	slidesToScroll: 1,
 	slidesToShow: 1,
 	draggable: false,
+	duration: 0.5,
+	rewind: false
+});
 
-})
+let currentIndex = 0;
 
 setInterval(() => {
-  	mainSlider.scrollItem((mainSlider.page + 1) % mainSlider.slides.length);
+	currentIndex = (currentIndex + 1) % mainSlider.slides.length;
+	mainSlider.scrollItem(currentIndex);
 }, 4000);
-
 
 //News
 new Glider(document.querySelector('.news__slider'), {

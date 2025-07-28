@@ -1,6 +1,10 @@
 {% extends "main/base.html" %}
 
 {% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Галерея" %}{% endblock %}
+{% block descr %}{% trans "Ojar Aziya - одна из крупнейших компаний в сфере строительства и инфраструктуры в Туркменистане. " %}{% endblock %}
 
 {% block extracss %}
 <link rel="stylesheet" type="text/css" href="{% static 'gallery/css/gallery.css' %}"> 
@@ -10,7 +14,7 @@
 
 <section class="gallery">
 	<div class="container">
-		<div class="gallery__title">Галерея</div>
+		<div class="gallery__title">{% trans "Галерея" %}</div>
 		<div class="gallery__wrapper">
 			{% for gallery in gallery %}
 			<a  data-fancybox="gallery" 

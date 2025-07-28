@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Slider, Videos, Awards
 from projects.models import Projects
 from news.models import News
+from .forms import ContactForm
+from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
@@ -12,16 +14,27 @@ def home(request):
 	videos = get_object_or_404(Videos, id=1)
 	awards = Awards.objects.all()
 
+	
+
 	context = {
 		'slides' : slides,
 		'news' : news,
 		'projects' : projects,
 		'videos' : videos,
-		'awards' : awards
+		'awards' : awards,
 	}
 	return render(request, 'home/home.html', context)
 
 def contacts(request):
-	
+	if request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('/contacts/?sent=1')  # или другой URL
+	else:
+		form = ContactForm()
 
-	return render(request, 'home/contacts.html')
+	sent = request.GET.get('sent') == '1'
+
+	return render(request, 'home/contacts.html', {'form' : form, 'sent' : sent})
+

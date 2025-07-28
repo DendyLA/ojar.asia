@@ -102,6 +102,7 @@ header.fixed + .header-placeholder {
 	text-transform: uppercase;
 }
 
+
 .nav__item a:hover{
 	color:#00A850;
 }
@@ -198,35 +199,93 @@ header.fixed + .header-placeholder {
 	height: 100%;
 }
 
+.header__back{
+	display: none;
+}
+
 
 .media__item:hover{
 	transform: scale(1.1);
 }
 
+.hamburger{
+	display: none;
+}
+
+.language-switcher{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	/* position: absolute;
+	top: 50px;
+	right: 200px; */
+}
+
+.language-button{	
+	all: unset;
+	width: 40px;
+	height: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.language-button img{
+	width: 100%;
+	height: 100%;
+}
+
+.language-switcher button img{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #ccc;
+}
+
+.nav__top{
+	display: flex;
+	gap: 2rem;
+}
 
 /* Большие десктопы */
 @media (max-width: 419px) {
-	.header__right{
-		opacity: 0;
+	.hamburger{
+		display: block;
+	}
+	.header__back{
+		display: block;
 		position: absolute;
-		top: 90px;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 90px;
+		background-color: white;
+		z-index: 101;
+	}
+	.logo, .hamburger, .header{
+		z-index: 101;
+	}
+	.header__right{
+		position: absolute;
 		left: 0	;
-		z-index: 1;
+		z-index: 100;
 		background-color: white;
 		width: 100vw;
 		align-items: flex-start;
 		padding: 1rem 1rem 1rem 2rem;
 		transition: all .3s;
+		position: fixed;
+  		top: -105px;
 	}
+	.header__right.header__active {
+		top: 90px; 
+	}
+	
 	.nav{
 		flex-wrap: wrap;
 		justify-content: flex-start;
 	}
 	.nav__item a{
 		font-size: 1.3rem;
-	}
-	.header__active{
-		opacity: 1;
 	}
 	.sub-nav{
 		top: 100px;
@@ -243,22 +302,39 @@ header.fixed + .header-placeholder {
  }
 /* Мобильные устройства (до 576px) */
 @media (min-width: 420px) and (max-width: 575px) {
-	.header__right{
-		display: none;
+	.hamburger{
+		display: block;
+	}
+	.header__back{
+		display: block;
 		position: absolute;
-		top: 90px;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 90px;
+		background-color: white;
+		z-index: 101;
+	}
+	.logo, .hamburger, .header{
+		z-index: 101;
+	}
+	.header__right{
+		position: absolute;
 		left: 0	;
-		z-index: 1;
+		z-index: 100;
 		background-color: white;
 		width: 100vw;
 		align-items: flex-start;
 		padding: 1rem 1rem 1rem 2rem;
+		transition: all .3s;
+		position: fixed;
+  		top: -105px;
+	}
+	.header__right.header__active {
+		top: 90px; 
 	}
 	.nav__item a{
 		font-size: 1.4rem;
-	}
-	.header__active{
-		display: flex;
 	}
 	.sub-nav{
 		top: 73px;

@@ -1,12 +1,18 @@
-
+{% load i18n %}
 {% load static %}
+
+
 <!DOCTYPE html>
-<html>
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <!-- Обязательные мета-теги -->
+
+	
     <meta charset="utf-8">
 	<title>{% block title %}{% endblock %}</title>
     {% block meta %}{% endblock %}
+
+	<meta name="description" content="{% block descr %}{% endblock %}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, initial-scale=1.0">	
 
@@ -15,6 +21,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
 
 	<link rel="stylesheet" type="text/css" href="{% static 'main/css/slick.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'main/css/slick-theme.css' %}">
@@ -25,47 +33,69 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'main/css/glider.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'main/css/leaflet.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'main/css/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/css/intlTelInput.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/base.css' %}">
-
+	
 	{% block extracss %}{% endblock %}
-    
+
+
 </head>
 <body>
 	<header>
 		<div class="container">
 			<div class="header">
+				<div class="header__back"></div>
 				<a href="{% url "home" %}" class="logo">
 					<img src="{% static 'main/img/logo.png' %}" alt="logo">
 				</a>
 				<div class="header__right">
 					<ul class="nav__top">
-						<li class="nav__item nav__item_thin"><a href="{% url "contacts" %}">Контакты</a></li>
+
+						<form action="{% url 'set_language' %}" method="post" class="language-switcher">
+							{% csrf_token %}
+							<input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+							<button type="submit" name="language" value="en" class="language-button">
+								<img src="{% static 'main/img/flags/en.png' %}" alt="English" class="language-flag">
+							</button>
+
+							<button type="submit" name="language" value="ru" class="language-button">
+								<img src="{% static 'main/img/flags/ru.png' %}" alt="Русский" class="language-flag">
+							</button>
+
+							<button type="submit" name="language" value="tk" class="language-button">
+								<img src="{% static 'main/img/flags/tk.png' %}" alt="Türkmen dili" class="language-flag">
+							</button> 
+						</form>
+
+						<li class="nav__item nav__item_thin"><a href="{% url "contacts" %}">{% trans "Контакты" %}</a></li>
 					</ul>
 					<div class="nav__separator"></div>
 					<ul class="nav">
 						<li class="nav__item">
-							<a href="{% url "about" %}">О нас</a>
+							<a href="{% url "about" %}">{% trans "О нас" %}</a>
 						</li>
 						<li class="nav__item">
-							<a href="{% url "directions" %}" >Деятельность</a>
+							<a href="{% url "directions" %}" >{% trans "Деятельность" %}</a>
 						</li>
 						<li class="nav__item">
-							<a href="" class="activeNav">Проекты</a>
+							<a href="" class="activeNav">{% trans "Проекты" %}</a>
 							<ul class="sub-nav">
-								<li class="sub-nav__item"><a href="{% url "current-projects" %}">Текущие проекты</a></li>
-								<li class="sub-nav__item"><a href="{% url "not-current-projects" %}">Выполненные проекты</a></li>
+								<li class="sub-nav__item"><a href="{% url "current-projects" %}">{% trans "Текущие проекты" %}</a></li>
+								<li class="sub-nav__item"><a href="{% url "not-current-projects" %}">{% trans "Выполненные проекты" %}</a></li>
 							</ul>
 						</li>
 						<li class="nav__item">
-							<a href="" class="activeNav">Пресс-центр</a>
+							<a href="" class="activeNav">{% trans "Пресс-центр" %}</a>
 							<ul class="sub-nav">
-								<li class="sub-nav__item"><a href="{% url "news-all" %}">Новости</a></li>
-								<li class="sub-nav__item"><a href="{% url "gallery" %}">Галерея</a></li>
+								<li class="sub-nav__item"><a href="{% url "news-all" %}">{% trans "Новости" %}</a></li>
+								<li class="sub-nav__item"><a href="{% url "gallery" %}">{% trans "Галерея" %}</a></li>
 							</ul>
 						</li>
 					</ul>
 
 				</div>
+				
 				<button class="hamburger hamburger--spin" type="button">
 					<span class="hamburger-box">
 						<span class="hamburger-inner"></span>
@@ -83,7 +113,7 @@
 			<div class="footer">
 				<div class="footer__left">
 					<div class="company">Ojar Aziya</div>
-					<div class="rights">Все права защищены</div>
+					<div class="rights">{% trans "Все права защищены" %}</div>
 				</div>
 				<div class="footer__media">
 					<div class="media__item"><a href=""><i class="fa-brands fa-facebook-f"></i></a></div>
@@ -94,6 +124,7 @@
 		</div>
 	</footer>
 
+
     <!-- Дополнительные скрипты JavaScript -->
 	<script src="{% static 'main/js/jquery.min.js' %}"></script>
 	<script src="{% static 'main/js/jquery-migrate.min.js' %}"></script>
@@ -103,8 +134,13 @@
 	<script src="{% static 'main/js/fancybox.umd.js' %}"></script>
 	<script src="{% static 'main/js/glider.js' %}"></script>
 	<script src="{% static 'main/js/leaflet.js' %}"></script>
+	<script src="{% static 'main/js/intlTelInput.min.js' %}"></script>
+	<script src="{% static 'main/js/utils.js' %}"></script>
     <script src="{% static 'main/js/base.js' %}"></script>
 	
 	{% block extrajs %}{% endblock %}
+
+
+	
 </body>
 </html>

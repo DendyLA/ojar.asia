@@ -1,10 +1,14 @@
 {% extends "main/base.html" %}
 
+{% load i18n %}
 {% load static %}
 
 {% block extracss %}
 <link rel="stylesheet" type="text/css" href="{% static 'home/css/home.css' %}">
 {% endblock extracss %}
+
+{% block title %}{% trans "Главная" %}{% endblock %}
+{% block descr %}{% trans "Ojar Aziýa – это многопрофильный холдинг, реализующий масштабные проекты в сферах автодорожного строительства, транспортно-логистических услуг, жилой и промышленной застройки, а также коммунальной инфраструктуры." %}{% endblock %}
 
 
 {% block main %}
@@ -21,7 +25,7 @@
 	</div>
 	
 	
-	<h1 class="title main__title">Создаём то,<br> что имеет значение</h1>
+	<h1 class="title main__title"> {% blocktrans %} Создаём то,<br> что имеет значение {% endblocktrans %}</h1>
 
 	
 </section>
@@ -29,15 +33,15 @@
 <section class="about">
 	<div class="container">
 		<div class="about__wrapper">
-			<h2 class="title about__title">Ojar Aziýa – это многопрофильный холдинг, реализующий масштабные проекты в сферах автодорожного строительства, транспортно-логистических услуг, жилой и промышленной застройки, а также коммунальной инфраструктуры.</h2>
-			<a href="{% url "about" %}" class="about__btn">Подробнее</a>
+			<h2 class="title about__title">{% trans "Ojar Aziýa – это многопрофильный холдинг, реализующий масштабные проекты в сферах автодорожного строительства, транспортно-логистических услуг, жилой и промышленной застройки, а также коммунальной инфраструктуры." %}	</h2>
+			<a href="{% url "about" %}" class="about__btn" >{% trans "Подробнее" %}</a>
 		</div>
 	</div>
 </section>
 
 <section class="news">
 	<div class="container">
-		<div class="title news__title">Последние новости</div>
+		<div class="title news__title">{% trans "Последние новости" %}</div>
 
 		<div class="news__wrapper">
 			<div class="news__slider">
@@ -45,28 +49,7 @@
 				<div class="news__item">
 					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
 					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
-					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
-				</div>
-
-				<div class="news__item">
-					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
-					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
-					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
-				</div>
-				<div class="news__item">
-					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
-					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
-					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
-				</div>
-				<div class="news__item">
-					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
-					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
-					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
-				</div>
-				<div class="news__item">
-					<a class='news__imageWrapper' href="{{ news.get_absolute_url }}"><img src="{{ news.image.url }}" alt="News Image" class="news__img"></a>
-					<a href="{{ news.get_absolute_url }}" class="news__desc">{{ news.title }}</a>
-					<a href="{{ news.get_absolute_url }}" class="news__read">Подробнее</a>
+					<a href="{{ news.get_absolute_url }}" class="news__read">{% trans "Подробнее" %}</a>
 				</div>
 				{% endfor %} 
 			</div>
@@ -85,11 +68,12 @@
 	
 </section>
 
+
 <section class="video">
 	<div class="container">
 		<div class="video__container">
 			<div class="video__left">
-				<h4 class="video__title">Ключевой проект</h4>
+				<h4 class="video__title">{% trans "Ключевой проект" %}</h4>
 				<h3 class="video__name">{{ videos.title }}</h3>
 				<div class="video__descr">{{ videos.text|safe }}</div>
 							</div>
@@ -105,8 +89,8 @@
 <section class="projects">
 	<div class="container">
 		<div class="projects__top">
-			<h3 class="projects__title title">Текущие проекты</h3>
-			<a href="{% url "current-projects" %}" class="projects__link">Все проекты <i class="fa-solid fa-arrow-right"></i></a>
+			<h3 class="projects__title title">{% trans "Текущие проекты" %}</h3>
+			<a href="{% url "current-projects" %}" class="projects__link">{% trans "Все проекты" %} <i class="fa-solid fa-arrow-right"></i></a>
 		</div>
 		<div class="projects__wrapper">
 			{% for project in projects %}
@@ -131,7 +115,7 @@
 
 <section class="awards">
 	<div class="container">
-		<div class="awards__title">Награды</div>
+		<div class="awards__title">{% trans "Награды" %}</div>
 		<div class="awards__wrapper">
 			{% for award in awards %}
 			<div class="awards__item">
@@ -153,9 +137,9 @@
 <section class="contact">
 	<div class="container">
 		<div class="contact__wrapper">
-			<div class="contact__title">Задать вопрос</div>
-			<div class="contact__text">Есть вопрос или хотите связаться с командой Ojar Aziya? Мы всегда рады помочь — напишите нам!</div>
-			<a href="{% url "contacts" %}" class="contact__btn">Связаться</a>
+			<div class="contact__title">{% trans "Задать вопрос" %}</div>
+			<div class="contact__text">{% trans "Есть вопрос или хотите связаться с командой Ojar Aziya? Мы всегда рады помочь — напишите нам!" %}</div>
+			<a href="{% url "contacts" %}" class="contact__btn">{% trans "Связаться" %}</a>
 		</div>
 	</div>
 </section>

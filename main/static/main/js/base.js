@@ -62,3 +62,40 @@ const headerRight = document.querySelector('.header__right')
 
 toogleBurger(burger, headerRight)
 
+
+//link for languages
+function setLanguage(lang) {
+    fetch('/set_language/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'), // Функция для получения CSRF
+        },
+        body: JSON.stringify({ lang: lang })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            window.location.reload();
+        } else {
+            console.error('Ошибка смены языка:', data.error);
+        }
+    })
+    .catch(error => console.error('Ошибка сети:', error));
+}
+
+// Функция для получения CSRF-токена
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie) {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}

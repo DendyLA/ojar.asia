@@ -14,6 +14,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include
 
@@ -24,7 +26,19 @@ from about.views import about
 from directions.views import directions
 from gallery.views import gallery
 
+from django.contrib.sitemaps.views import sitemap
+from .sitemap import NewsSitemap, ProjectsSitemap, StaticViewSitemap
+
+from django.views.static import serve
+from django.conf import settings
+
 urlpatterns = [
+    # Для редиректов и переключения языка
+    path('i18n/', include('django.conf.urls.i18n')),
+]
+
+
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
 	path('', include('home.urls')),
     path('about/', about, name='about'),
@@ -32,6 +46,24 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     path('news/', include('news.urls')),
     path('gallery/', gallery, name='gallery')
+)
+
+sitemaps = {
+    'news': NewsSitemap,
+    'projects': ProjectsSitemap,
+    'static': StaticViewSitemap,
+}
+
+urlpatterns += [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+]
+
+urlpatterns += [
+    path("robots.txt", serve, {
+        'path': "home/robots.txt",
+        'document_root': settings.STATIC_ROOT,
+        'content_type': "text/plain"
+    }),
 ]
 
 if settings.DEBUG:

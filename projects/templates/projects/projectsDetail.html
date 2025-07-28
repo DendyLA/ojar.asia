@@ -1,6 +1,10 @@
 {% extends "main/base.html" %}
 
 {% load static %}
+{% load i18n %}
+
+{% block title %}{{ projects.title }}{% endblock %}
+{% block descr %}{{ projects.text|striptags|truncatechars:160 }}{% endblock %}
 
 {% block extracss %}
 <link rel="stylesheet" type="text/css" href="{% static 'projects/css/projectsDetail.css' %}"> 

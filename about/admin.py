@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.contrib import admin
+from parler.admin import TranslatableAdmin
 
 from . import models
 
 @admin.register(models.AboutMain)
-class VideosAdmin( admin.ModelAdmin):
+class VideosAdmin( TranslatableAdmin):
     list_display = ( 'title', 'text',)
     list_display_links = ('title', 'text' )
     readonly_fields = ('created_at', )
@@ -25,7 +26,7 @@ class VideosAdmin( admin.ModelAdmin):
 
 
 @admin.register(models.Info)
-class InfoAdmin( admin.ModelAdmin):
+class InfoAdmin( TranslatableAdmin):
     list_display = ( 'category', 'number',)
     list_display_links = ('category', 'number', )
     readonly_fields = ('created_at', )
@@ -45,7 +46,7 @@ class InfoAdmin( admin.ModelAdmin):
 
 
 @admin.register(models.Comment)
-class CommentAdmin( admin.ModelAdmin):
+class CommentAdmin( TranslatableAdmin):
     list_display = ('preview', 'author', 'position')
     list_display_links = ('preview', 'author', 'position')
     readonly_fields = ('preview',)

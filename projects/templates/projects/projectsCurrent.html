@@ -1,6 +1,11 @@
 {% extends "main/base.html" %}
 
 {% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Текущие проекты" %}{% endblock %}
+{% block descr %}{% trans "Ojar Aziýa – это многопрофильный холдинг, реализующий масштабные проекты в сферах автодорожного строительства, транспортно-логистических услуг, жилой и промышленной застройки, а также коммунальной инфраструктуры." %} {% endblock %}
+
 
 {% block extracss %}
 <link rel="stylesheet" type="text/css" href="{% static 'projects/css/projectsCurrent.css' %}">
@@ -10,7 +15,7 @@
 
 <section class="projects">
 	<div class="container">
-		<h2 class="projects__title">Текущие проекты</h2>
+		<h2 class="projects__title">{% trans "Текущие проекты" %}</h2>
 		<div class="projects__wrapper">
 			{% for project in projects %}
 			<a href="{{ project.get_absolute_url }}" class="projects__item">

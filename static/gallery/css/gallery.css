@@ -3,17 +3,22 @@
 }
 
 .gallery__wrapper{
-	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 3rem;
 	flex-wrap: wrap;
-	gap: 4rem;
 }
 
 .gallery__item{
 	width: 30%;
 	height: 400px;
+	overflow: hidden;
+	transition: all .3s;
+}
+
+.gallery__item:hover{
+	transform: scale(1.04);
 }
 
 .gallery__item img{
