@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
 	'django_cleanup.apps.CleanupConfig',
     'django.contrib.staticfiles',
+	'django.contrib.sites',
 	'parler',
 	'django.contrib.sitemaps',
 	'ckeditor',
